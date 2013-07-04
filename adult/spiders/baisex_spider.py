@@ -5,7 +5,7 @@ from adult.items import AdultItem
 class BaiSexSpider(BaseSpider):
 	#baisex ip
 	baisex_url = "http://173.245.71.203/"
-	pages_num = 3
+	pages_num = 200 
 
 	name = "baisex"
 	allowed_domains = ["173.245.71.203"]
