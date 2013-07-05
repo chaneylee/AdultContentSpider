@@ -7,7 +7,7 @@ import sqlite3
 class AdultPipeline(object):
 	#when the spider is open,then open the datebase
 	def open_spider(self,spider):
-		self.con=sqlite3.connect("baisex.db")
+		self.con=sqlite3.connect("G:/baisex.db")
 		self.cur=self.con.cursor()
 	
 	#def __init__(self):

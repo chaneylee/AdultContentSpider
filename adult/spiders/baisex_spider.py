@@ -6,11 +6,43 @@ class BaiSexSpider(BaseSpider):
 	#baisex ip
 	baisex_url = "http://173.245.71.203/"
 	
-	#total number of the section
-	total_pages = 531 
+	##movie section relative page url prifix
+	##mosaic
+	#relative_url_prifix = "forum-109-"
+	##total number of the section
+	#total_pages = 531 
+	
+	##no mosaic
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-108-"
+	##total number of the section
+	#total_pages = 417 
+	
+	##thunder
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-66-"
+	##total number of the section
+	#total_pages = 212 
 
+	##HD
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-107-"
+	##total number of the section
+	#total_pages = 145 
+	
+	##Cell phone
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-69-"
+	##total number of the section
+	#total_pages = 213 
+	
+	#Emule 
 	#movie section relative page url prifix
-	relative_url_prifix = "forum-109-"
+	relative_url_prifix = "forum-67-"
+	#total number of the section
+	total_pages = 287 
+
+
 
 	name = "baisex"
 	allowed_domains = ["173.245.71.203"]
