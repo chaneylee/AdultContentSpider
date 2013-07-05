@@ -36,11 +36,23 @@ class BaiSexSpider(BaseSpider):
 	##total number of the section
 	#total_pages = 213 
 	
-	#Emule 
+	##Emule 
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-67-"
+	##total number of the section
+	#total_pages = 287 
+
+	##mosaic 2 
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-61-"
+	##total number of the section
+	#total_pages = 407 
+	
+	#no mosaic 2 
 	#movie section relative page url prifix
-	relative_url_prifix = "forum-67-"
+	relative_url_prifix = "forum-60-"
 	#total number of the section
-	total_pages = 287 
+	total_pages = 673 
 
 
 

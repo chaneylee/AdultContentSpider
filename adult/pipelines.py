@@ -7,22 +7,18 @@ import sqlite3
 class AdultPipeline(object):
 	#when the spider is open,then open the datebase
 	def open_spider(self,spider):
-		self.con=sqlite3.connect("G:/baisex.db")
+		#self.con=sqlite3.connect("G:/baisex.db")
+		self.con=sqlite3.connect("baisex.db")
 		self.cur=self.con.cursor()
-	
-	#def __init__(self):
-		#self.con=sqlite3.connect("baisex.db")
-		#self.cur=self.con.cursor()
-	
 	
 	def process_item(self, item, spider):
 		self.cur.execute("insert into movie values(?,?,?,?)",
 				(None,item['title'],item['link'],item['date'])
 				)
-		self.con.commit()
         	return item
 	
-	#when the spider is finished,close the datebase connection
+	#when the spider is finished,commit the transaction and close the datebase connection
 	def close_spider(self,spider):
+		self.con.commit()
 		self.con.close()
 
