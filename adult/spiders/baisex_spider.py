@@ -4,8 +4,13 @@ from scrapy.selector import HtmlXPathSelector
 from adult.items import AdultItem 
 
 class BaiSexSpider(BaseSpider):
-	#baisex ip
+	#baisex ip. The last splash is necessary
 	baisex_url = "http://173.245.71.203/"
+	avbbs_url ="http://69.46.86.131/"
+	
+	#homepage_url = baisex_url
+	homepage_url = avbbs_url
+	
 	
 	pages = (
 			{'channel':'亚洲BT无码',
@@ -125,17 +130,35 @@ class BaiSexSpider(BaseSpider):
 	##total number of the section
 	#total_pages = 44  
 	
-	#Network Disk  
-	#movie section relative page url prifix
-	relative_url_prifix = "forum-68-"
-	#total number of the section
-	total_pages = 928
+	##Network Disk  
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-68-"
+	##total number of the section
+	#total_pages = 928
+	
+	##Self-Time  Online
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-123-"
+	##total number of the section
+	#total_pages = 137
+	
+	##Aisan Online  
+	##movie section relative page url prifix
+	#relative_url_prifix = "forum-107-"
+	##total number of the section
+	#total_pages = 132
 
+	#Native X-ralated Online  
+	#movie section relative page url prifix
+	relative_url_prifix = "forum-106-"
+	#total number of the section
+	total_pages = 31
+	
 	#test one page
 	#total_pages = 1  
 	
 	name = "baisex"
-	allowed_domains = ["173.245.71.203"]
+	allowed_domains = [homepage_url[7:-1]]
 	start_urls = []
 	
 	#xpath string
@@ -163,7 +186,7 @@ class BaiSexSpider(BaseSpider):
 		item['channel'] = channel[0]
 		for title,link,date in zip(titles,links,dates):
 			item['title'] = title
-			item['link'] = self.baisex_url+link
+			item['link'] = self.homepage_url+link
 			item['date'] = date
 			yield item
 	
@@ -172,6 +195,6 @@ class BaiSexSpider(BaseSpider):
 	def __create_urls(self):
 		start_page = 1 
 		while start_page <= self.total_pages:
-			self.start_urls.append(self.baisex_url+self.relative_url_prifix+str(start_page)+".html")
+			self.start_urls.append(self.homepage_url+self.relative_url_prifix+str(start_page)+".html")
 			start_page += 1
 	
