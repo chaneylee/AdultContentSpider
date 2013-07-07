@@ -10,4 +10,5 @@ class AdultItem(Item):
     title = Field() 
     link = Field()
     date = Field()
+    channel = Field()
     #pass

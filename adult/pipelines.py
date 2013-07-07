@@ -12,8 +12,8 @@ class AdultPipeline(object):
 		self.cur=self.con.cursor()
 	
 	def process_item(self, item, spider):
-		self.cur.execute("insert into movie values(?,?,?,?)",
-				(None,item['title'],item['link'],item['date'])
+		self.cur.execute("insert into movie values(?,?,?,?,?)",
+				(None,item['title'],item['link'],item['date'],item['channel'])
 				)
         	return item
 	
