@@ -12,7 +12,7 @@ class BaiSexSpider(BaseSpider):
 	homepage_url = avbbs_url
 	
 	
-	pages = (
+	channels= (
 			{'channel':'亚洲BT无码',
 		  	'relative_url_prifix':'forum-109-',
 	          	'total_pages':531,
@@ -68,103 +68,31 @@ class BaiSexSpider(BaseSpider):
 	          	'total_pages':928,
 			'ToBeCrawled':False
 			 	},
+			{'channel':'自拍偷拍视频',
+		  	'relative_url_prifix':'forum-123-',
+	          	'total_pages':137,
+			'ToBeCrawled':False
+			 	},
+			{'channel':'亚洲在线视频',
+		  	'relative_url_prifix':'forum-107-',
+	          	'total_pages':132,
+			'ToBeCrawled':False
+			 	},
+			{'channel':'国产三级视频',
+		  	'relative_url_prifix':'forum-106-',
+	          	'total_pages':31,
+			'ToBeCrawled':False
+			 	},
+			{'channel':'另类SM视频',
+		  	'relative_url_prifix':'forum-124-',
+	          	'total_pages':117,
+			'ToBeCrawled':True
+			 	},
 			)
-
-	##movie section relative page url prifix
-	##mosaic
-	#relative_url_prifix = "forum-109-"
-	##total number of the section
-	#total_pages = 531 
-	
-	##no mosaic
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-108-"
-	##total number of the section
-	#total_pages = 417 
-	
-	##thunder
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-66-"
-	##total number of the section
-	#total_pages = 212 
-
-	##HD
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-107-"
-	##total number of the section
-	#total_pages = 145 
-	
-	##Cell phone
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-69-"
-	##total number of the section
-	#total_pages = 213 
-	
-	##Emule 
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-67-"
-	##total number of the section
-	#total_pages = 287 
-
-	##mosaic 2 
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-61-"
-	##total number of the section
-	#total_pages = 407 
-	
-	##no mosaic 2 
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-60-"
-	##total number of the section
-	#total_pages = 673 
-	
-	##X-rated  
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-111-"
-	##total number of the section
-	#total_pages = 245  
-
-	##HD 2  
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-182-"
-	##total number of the section
-	#total_pages = 44  
-	
-	##Network Disk  
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-68-"
-	##total number of the section
-	#total_pages = 928
-	
-	##Self-Time  Online
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-123-"
-	##total number of the section
-	#total_pages = 137
-	
-	##Aisan Online  
-	##movie section relative page url prifix
-	#relative_url_prifix = "forum-107-"
-	##total number of the section
-	#total_pages = 132
-
-	#Native X-ralated Online  
-	#movie section relative page url prifix
-	relative_url_prifix = "forum-106-"
-	#total number of the section
-	total_pages = 31
-	
-	#test one page
-	#total_pages = 1  
 	
 	name = "baisex"
 	allowed_domains = [homepage_url[7:-1]]
 	start_urls = []
-	
-	#xpath string
-	#title_xpath = "//form[@id=\'moderate\']/table/tbody[position()>9]//th/a[1]/text()"
-	#link_xpath = "//form[@id=\'moderate\']/table/tbody[position()>9]//th/a[1]/@href"
-	#date_xpath = "//form[@id=\'moderate\']/table/tbody[position()>9]//td[2]/em/span/text()"
  	
 	#xpath string
 	title_xpath = "//form[@id=\'moderate\']/table/tbody//th/a[1]/text()"
@@ -190,11 +118,13 @@ class BaiSexSpider(BaseSpider):
 			item['date'] = date
 			yield item
 	
-
 	#create the urls need to be extracted
 	def __create_urls(self):
-		start_page = 1 
-		while start_page <= self.total_pages:
-			self.start_urls.append(self.homepage_url+self.relative_url_prifix+str(start_page)+".html")
-			start_page += 1
+		for channel in self.channels:
+			if channel['ToBeCrawled']:
+				start_page = 1 
+				while start_page <= channel['total_pages']:
+					self.start_urls.append(self.homepage_url+channel['relative_url_prifix']+str(start_page)+".html")
+					start_page += 1
+
 	
